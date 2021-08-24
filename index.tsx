@@ -3,14 +3,18 @@ import { render } from 'react-dom';
 import './style.css';
 
 const App: React.FunctionComponent<{}> = () => {
-  const [firstName, setFirstName] = useState<string>('');
+  const [firstName, setFirstName] = useState('');
+  const [tableData, setTableData] = useState(['a', 'b']);
   const updateMyInput = e => {
     setFirstName(e.target.value);
   };
   return (
     <div>
       <input value={firstName} onChange={updateMyInput} />
-      <p>{firstName}</p>
+      {tableData.map((key, value) => {
+        return <div key={value}>{key}</div>;
+      })}
+      <div>{firstName}</div>
     </div>
   );
 };
